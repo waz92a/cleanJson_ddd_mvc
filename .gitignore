@@ -1,0 +1,136 @@
+# Visual Studio files
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+*.tlog
+*.idb
+ipch/
+obj/
+[Bb]in/
+[Dd]ebug*/
+[Rr]elease*/
+x64/
+build/
+bld/
+[Bb]ld/
+[Ll]ogs/
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+orleans.codegen.cs
+
+# Visual Studio Code files
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# ASP.NET Core files
+bin/
+obj/
+*.csproj.user
+appsettings.Development.json
+wwwroot/dist/
+wwwroot/lib/
+wwwroot/bundles/
+
+# NuGet Packages
+*.nupkg
+packages/
+**/packages/*
+!packages/build/
+
+# Entity Framework Core
+Migrations/
+
+# User-specific files
+*.rsuser
+*.dotCover
+*.resharper
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x86/
+x64/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# MSTest
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NUnit
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+
+# Coverlet (code coverage)
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# Others
+ClientBin/
+~$*
+*~
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+node_modules/
+orleans.codegen.cs
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Temporary files created by Visual Studio
+*.swp
+*.tmp
+*.*.VisualState.xml
+.vs
+.config

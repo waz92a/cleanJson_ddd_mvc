@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/RicoSuter/NSwag/master/src/NSwag.Commands/commands/NSwagDocument.schema.json",
+  "runtime": "Net80",
+  "defaultVariables": {
+    "webApiProject": "../CleanJson.Web/CleanJson.Web.csproj",
+    "output": "../react-client/src/api/client.ts"
+  },
+  "documentGenerator": {
+    "aspNetCoreToOpenApi": {
+      "project": "$(webApiProject)",
+      "noBuild": true,
+      "version": "v1",
+      "title": "CleanJson API",
+      "aspNetCoreEnvironment": "Development",
+      "defaultPropertyNameHandling": "CamelCase"
+    }
+  },
+  "codeGenerators": {
+    "openApiToTypeScriptClient": {
+      "className": "CleanJsonClient",
+      "template": "Fetch",
+      "httpClass": "Fetch",
+      "useAbortSignal": true,
+      "useGetBaseUrlMethod": true,
+      "generateClientClasses": true,
+      "generateClientInterfaces": false,
+      "generateOptionalParameters": true,
+      "typeScriptVersion": 4.3,
+      "output": "$(output)"
+    }
+  }
+}
