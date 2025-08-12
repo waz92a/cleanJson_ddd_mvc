@@ -1,3 +1,4 @@
+using System;
 using CleanJson.Domain.Abstractions;
 using CleanJson.Infrastructure.Options;
 using Microsoft.Extensions.Options;
@@ -14,7 +15,11 @@ public sealed class RemoteJsonSource : IRemoteJsonSource
     public RemoteJsonSource(HttpClient http, IOptions<RemoteJsonOptions> options)
     {
         _http = http;
-        _endpoint = options.Value.Endpoint ?? string.Empty;
+        _endpoint = options.Value.Endpoint;
+        if (string.IsNullOrWhiteSpace(_endpoint))
+        {
+            throw new InvalidOperationException("Remote JSON endpoint is not configured.");
+        }
     }
 
     public async Task<JToken> FetchAsync(CancellationToken ct = default)
