@@ -32,8 +32,6 @@ builder.Services.AddHttpClient<IRemoteJsonSource, RemoteJsonSource>();
 builder.Services.AddSingleton<IJsonCleaner, NewtonsoftJsonCleaner>();
 builder.Services.AddScoped<CleanRemoteJsonHandler>();
 
-System.Console.WriteLine("sdfsdfsdfsdfsdf");
-
 // CORS for React dev
 builder.Services.AddCors(o =>
 {
