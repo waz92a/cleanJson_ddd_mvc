@@ -4,6 +4,9 @@ using CleanJson.Infrastructure.Cleaning;
 using CleanJson.Infrastructure.Http;
 using CleanJson.Infrastructure.Options;
 using Microsoft.OpenApi.Models;
+using System;
+using System.Net;
+using System.Net.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +31,21 @@ builder.Services.Configure<RemoteJsonOptions>(
     builder.Configuration.GetSection(RemoteJsonOptions.SectionName));
 
 // DI (DDD)
-builder.Services.AddHttpClient<IRemoteJsonSource, RemoteJsonSource>();
+builder.Services.AddHttpClient<IRemoteJsonSource, RemoteJsonSource>(client =>
+{
+    // Some third-party APIs do not fully support HTTP/2 and may terminate
+    // the response early. Force HTTP/1.1 to avoid "response ended prematurely"
+    // errors when fetching remote JSON content.
+    client.DefaultRequestVersion = new Version(1, 1);
+    client.DefaultVersionPolicy = HttpVersionPolicy.RequestVersionOrLower;
+})
+.ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
+{
+    // Completely disable HTTP/2 at the handler level and ensure the
+    // response stream is decompressed before deserialization.
+    AutomaticDecompression = DecompressionMethods.All,
+    MaxVersion = HttpVersion.Version11,
+});
 builder.Services.AddSingleton<IJsonCleaner, NewtonsoftJsonCleaner>();
 builder.Services.AddScoped<CleanRemoteJsonHandler>();
 
