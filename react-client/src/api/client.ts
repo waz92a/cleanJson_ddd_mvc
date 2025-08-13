@@ -13,8 +13,12 @@ export class CleanJsonClient {
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
 
     constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
-        this.http = http ? http : window as any;
+        this.http = http ? http : (typeof window !== "undefined" ? window : globalThis) as any;
         this.baseUrl = this.getBaseUrl("", baseUrl);
+    }
+
+    protected getBaseUrl(defaultUrl: string, baseUrl?: string) {
+        return baseUrl && baseUrl.trim().length > 0 ? baseUrl : defaultUrl;
     }
 
     /**
