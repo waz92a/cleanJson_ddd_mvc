@@ -9,8 +9,8 @@ export default function App() {
 
   async function load() {
     try {
-      const client = new CleanJsonClient({ baseUrl: 'https://localhost:7133' });
-      const result = await client.clean_Get();
+      const client = new CleanJsonClient('https://localhost:7133');
+      const result = await client.clean();
       setData(result);
       setError(null);
     } catch (e: any) {
