@@ -19,9 +19,7 @@
     "openApiToTypeScriptClient": {
       "className": "CleanJsonClient",
       "template": "Fetch",
-      "httpClass": "Fetch",
       "useAbortSignal": true,
-      "useGetBaseUrlMethod": true,
       "generateClientClasses": true,
       "generateClientInterfaces": false,
       "generateOptionalParameters": true,
